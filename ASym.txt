@@ -101,4 +101,4 @@ Xenon 	Xe 	54 	131.30
 Ytterbium 	Yb 	70 	173.04 	1.1
 Yttrium 	Y 	39 	88.9059 	1.2
 Zinc 	Zn 	30 	65.38 	1.6
-Zirconium 	Zr 	40 	91.22 	1.4
+Zirconium Zr 40 91.22 1.4
