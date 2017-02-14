@@ -1,6 +1,7 @@
 //Class for Atomics. Will hold parallel vectors of Atomic Name and Atomic Value. 
 //Tied by array.
-/*Main Menu:
+/*
+Main Menu:
 	
 
 	-> Load Entry Files and specify file arguements.
@@ -34,3 +35,7 @@ File Name(s)/array.
 Atomic(Need generic name): 
 TOCHECK: Template class????
 
+
+
+
+*/
