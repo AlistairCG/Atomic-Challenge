@@ -25,9 +25,11 @@ int main() {
 			cout << "Enter a Number!\n\n";
 		}
 
-
+		Atomic A;
 		switch (input) {
+
 		case 1:	cout << "Loading Files...\n";
+			A.LoadFiles();
 			break;
 		case 2: cout << "List Entries...\n";
 			break;
@@ -35,7 +37,8 @@ int main() {
 			break;
 		case 4: cout << "Run\n";
 			break;
-
+		default: cout << "Sorry that is not a valid number!";
+			break;
 		}
 		cin.ignore(1000, '\n');
 
