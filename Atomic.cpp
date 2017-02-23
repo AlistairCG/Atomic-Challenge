@@ -1,3 +1,8 @@
+#include "Atomic.h"
+
+using namespace std;
+
+
 //Class for Atomics. Will hold parallel vectors of Atomic Name and Atomic Value. 
 //Tied by array.
 /*
@@ -32,10 +37,65 @@ Max file arg length(max string size)
 Load flags.
 File Name(s)/array.
 
-Atomic(Need generic name): 
-TOCHECK: Template class????
 
 
 
 
 */
+
+int Atomic::LoadFiles()
+{
+	string Origin, Replace;
+	ifstream FinOr, FinRep;
+
+
+	cout << "Specfiy Origin File Name(Including extensions): ";
+	cin >> Origin;
+	cout << "\nSpecify Replacement File Name: ";
+	cin >> Replace;
+
+	//File IO and err check
+	FinOr.open(Origin);
+	FinRep.open(Replace);
+
+
+
+	if (!FinOr.is_open()) {
+		cout << "Origin File '" << Origin << "' could not be opened!\n";
+		return -1;
+	}
+	else if(!FinRep.is_open()){
+		cout << "Replacement File '" << Replace << "' could not be opened!\n";
+		return -2;
+	}
+	else {
+		//File Read
+		Origin.assign((istreambuf_iterator<char>(FinOr)), (istreambuf_iterator<char>()));
+		Replace.assign((istreambuf_iterator<char>(FinRep)), (istreambuf_iterator<char>()));
+
+
+
+
+		
+		}
+
+	FinOr.close();
+	FinRep.close();
+
+
+
+	return 0;
+}
+
+void Atomic::ListFileName()
+{
+}
+
+void Atomic::ListFileEntry()
+{
+}
+
+std::string Atomic::Run()
+{
+	return std::string();
+}
