@@ -6,6 +6,7 @@
 
 
 
+
 class Atomic {
 	//Files
 	std::string File_OriginalLine = "N/A";
@@ -14,8 +15,12 @@ class Atomic {
 
 	//Arrays of string
 	std::string OriginalLines;
+
 	//Replacement slots
-	std::vector<std::string>Replacement;
+	std::vector<std::string>ReplacementName;
+	std::vector<std::string>ReplacementCode;
+	std::vector<std::string>ReplacementTie;
+
 	//Completed Lines
 	std::string ChangedLines;
 

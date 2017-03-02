@@ -46,8 +46,9 @@ File Name(s)/array.
 int Atomic::LoadFiles()
 {
 	string Origin, Replace;
-	ifstream FinOr, FinRep;
-
+	fstream FinOr, FinRep;
+	string tmp = "";
+	int line = 0;
 
 	cout << "Specfiy Origin File Name(Including extensions): ";
 	cin >> Origin;
@@ -59,9 +60,9 @@ int Atomic::LoadFiles()
 	FinRep.open(Replace);
 
 
-
 	if (!FinOr.is_open()) {
 		cout << "Origin File '" << Origin << "' could not be opened!\n";
+		
 		return -1;
 	}
 	else if(!FinRep.is_open()){
@@ -70,11 +71,39 @@ int Atomic::LoadFiles()
 	}
 	else {
 		//File Read
-		Origin.assign((istreambuf_iterator<char>(FinOr)), (istreambuf_iterator<char>()));
+		//Origin.assign((istreambuf_iterator<char>(FinOr)), (istreambuf_iterator<char>()));
+		
+		
+		while (FinOr) {
+			
+			
+
+			if (line < 3) {
+				
+				//Read
+				FinOr >> tmp;
+				//Assign
+				if (tmp != "") {
+					if (line == 0)ReplacementName.push_back(tmp);
+					if (line == 1)ReplacementCode.push_back(tmp);
+					if (line == 2)ReplacementTie.push_back(tmp);
+				}
+				//Count
+				line++;
+				tmp = "";
+
+			}
+			else {
+				//Garbage
+				getline(FinOr, tmp);
+				//Reset
+
+				tmp = "";
+				line = 0;
+			}
+			
+		}
 		Replace.assign((istreambuf_iterator<char>(FinRep)), (istreambuf_iterator<char>()));
-
-
-
 
 		
 		}
