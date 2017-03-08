@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <iomanip>
 
 
 
@@ -13,7 +14,7 @@ class Atomic {
 	std::string File_Replacment = "N/A";
 	
 
-	//Arrays of string
+	//Arrays of string(The sentence to be changed)
 	std::string OriginalLines;
 
 	//Replacement slots
@@ -24,13 +25,16 @@ class Atomic {
 	//Completed Lines
 	std::string ChangedLines;
 
-	int Replacement_Count;
+
+	size_t Replacement_Count;
+
 	int Original_Count;
 
 	public:
 
 
 		int LoadFiles();
+		void SetFileName(std::string a, std::string b);
 		void ListFileName();
 		void ListFileEntry();
 

@@ -10,14 +10,16 @@ using namespace std;
 int main() {
 
 
-	int  input = 0;
-	while (input == 0) {
+	int  input = 1;
+	Atomic A;
+	while (input != 0) {
 		cout << "====Main Menu====" << endl << endl;
 
 		cout << "1: Load File Entries\n";
 		cout << "2: List Entries\n";
 		cout << "3: Load Testing Strings\n";
 		cout << "4: Run\n";
+		cout << "5: Exit\n";
 
 		cin >> input;
 		if (cin.fail()) {
@@ -25,7 +27,7 @@ int main() {
 			cout << "Enter a Number!\n\n";
 		}
 
-		Atomic A;
+		
 		switch (input) {
 
 		case 1:	cout << "Loading Files...\n";
@@ -36,6 +38,10 @@ int main() {
 		case 3: cout << "Testing Strings...\n";
 			break;
 		case 4: cout << "Run\n";
+			A.Run();
+			break;
+		case 5: cout << "Good bye\n";
+			input = 0; //Exit
 			break;
 		default: cout << "Sorry that is not a valid number!";
 			break;
