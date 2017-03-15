@@ -163,8 +163,9 @@ std::string Atomic::Run()
 
 			//string check
 			string t = OriginalLines.substr(i, i + 2);
-
-			cout << "DEBUG: Compared: " << t << '|' << ReplacementCode[j] << endl;
+			
+			
+			cout << "DEBUG: Compared: " << t << "|  " << ReplacementCode[j] << endl;
 			if (t == ReplacementCode[j]) {
 				
 				matches++;

@@ -4,7 +4,8 @@
 #include <vector>
 #include <fstream>
 #include <iomanip>
-
+#include <algorithm>
+#include <string.h>
 
 
 
