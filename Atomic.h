@@ -16,7 +16,7 @@ class Atomic {
 	
 
 	//Arrays of string(The sentence to be changed)
-	std::string OriginalLines;
+	std::vector<std::string> OriginalLines;
 
 	//Replacement slots
 	std::vector<std::string>ReplacementName;
@@ -38,7 +38,7 @@ class Atomic {
 		void SetFileName(std::string a, std::string b);
 		void ListFileName();
 		void ListFileEntry();
-
+		int isEqual(std::string a, std::string b);
 
 		std::string Run();
 

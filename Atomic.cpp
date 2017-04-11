@@ -102,9 +102,17 @@ int Atomic::LoadFiles()
 			}
 			
 		}
-		//Get string for replacements and assign
+		//Read the sentance that is being manipulated, nothing fancy.
+		while (FinRep) {
+			FinRep >> tmp;
+			if(tmp != "")
+			OriginalLines.push_back(tmp);
+			tmp = "";
+
+		}
+		//Get string for replacements and assign to the object
 		Replace.assign((istreambuf_iterator<char>(FinRep)), (istreambuf_iterator<char>()));
-		OriginalLines = Replace;
+		Origin.assign((istreambuf_iterator<char>(FinOr)), (istreambuf_iterator<char>()));
 		
 		}
 
@@ -139,44 +147,53 @@ void Atomic::ListFileEntry()
 	}
 
 	cout << "Additionally collected weight values and letter substitutes to match!\n";
+	cout << "\nReplacement String: ";
+	for (size_t i = 0; i < OriginalLines.size(); i++) {
+		cout << OriginalLines[i] << " ";
+	}
+}
+
+int Atomic::isEqual(std::string Origin, std::string Replacement)
+{
+
+	cout << "DEBUG: ISEquals() Received the following:" << Origin << " " << Replacement << endl;
+
+	if (Origin.size() != Replacement.size()) {
+		return -1;
+	}
+
+
+
+
+
+
+	system("Pause");
+	return 0;
 }
 
 std::string Atomic::Run()
 {
 	//Begin String replacement using class OO.
-
-	//Mod is designed around what is replacing the chars. Meaning, that it will advance upon the string by the amount replaced. 
-	//ex: if no match for the (min 2) -> advance the string by 1 space. If match found for (3 chars) -> advance the string by 3 chars or end of string.
-	int mod = 0;
+	
 	//Counter for replacment matches of string
 	int matches = 0;
 
-	for (int i = 0; i < OriginalLines.size(); i + mod) {
-		
-		cout << "Inspection of chars: " << OriginalLines[i] << OriginalLines[i + 1] << endl;
-
-
+	//Go through each element of the replacement string
+	for (size_t i = 0; i < OriginalLines.size(); i++) {
+		cout << "Original String: " << OriginalLines[i] << endl;
+	
 		//replacement and measure length of string
 		for (unsigned j = 0; j < ReplacementName.size(); j++) {
-			cout << "DEBUG: Starting from Replacments of: " << ReplacementCode[j] << endl;
+			cout << "DEBUG: Starting from Replacments of: " << ReplacementCode[j] << " to " << OriginalLines[i] <<  endl;
 
-
-			//string check
-			string t = OriginalLines.substr(i, i + 2);
+			isEqual(OriginalLines[i], ReplacementCode[j]);
 			
-			
-			cout << "DEBUG: Compared: " << t << "|  " << ReplacementCode[j] << endl;
-			if (t == ReplacementCode[j]) {
-				
-				matches++;
-			}
+		
 				
 		}
 	
 
 
-		//Set Mod
-		//Check end of string 
 		}
 	
 
