@@ -24,7 +24,7 @@ class Atomic {
 	std::vector<std::string>ReplacementTie;
 
 	//Completed Lines
-	std::string ChangedLines;
+	std::vector<std::string> ChangedLines;
 
 
 	size_t Replacement_Count;

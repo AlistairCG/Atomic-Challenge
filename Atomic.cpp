@@ -157,13 +157,27 @@ int Atomic::isEqual(std::string Origin, std::string Replacement)
 {
 
 	cout << "DEBUG: ISEquals() Received the following:" << Origin << " " << Replacement << endl;
+	unsigned int sz = Origin.size();
 
 	if (Origin.size() != Replacement.size()) {
-		return -1;
+		for (unsigned int j = 0; j < sz || j < Replacement.size(); ++j) {
+			//Iterate through the Origin until it finds a sub match.
+			if (tolower(Origin[j]) == tolower(Replacement[j])) {
+				system("Pause");
+
+			}
+		
+		}
+
+
 	}
+	else {
 
-
-
+		for (unsigned int i = 0; i < sz; ++i) {
+			if (tolower(Origin[i]) != tolower(Replacement[i]))
+				return -2;
+		}
+	}
 
 
 
@@ -186,8 +200,9 @@ std::string Atomic::Run()
 		for (unsigned j = 0; j < ReplacementName.size(); j++) {
 			cout << "DEBUG: Starting from Replacments of: " << ReplacementCode[j] << " to " << OriginalLines[i] <<  endl;
 
-			isEqual(OriginalLines[i], ReplacementCode[j]);
-			
+			int check = isEqual(OriginalLines[i], ReplacementCode[j]);
+			if (check == 0)
+				matches++;
 		
 				
 		}
