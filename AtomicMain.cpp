@@ -34,7 +34,6 @@ int main() {
 			A.LoadFiles();
 			break;
 		case 2: cout << "List Entries...\n";
-			A.ListFileEntry();
 			break;
 		case 3: cout << "Testing Strings...\n";
 			break;
