@@ -150,7 +150,7 @@ void Atomic::ListFileEntry()
 	}
 
 	cout << "Collected weight values and letter substitutes to match!\n";
-	cout << "\The Replacement String is: ";
+	cout << "The Replacement String is: ";
 	for (size_t i = 0; i < OriginalLines.size(); i++) {
 		cout << OriginalLines[i] << " ";
 	}
@@ -165,15 +165,12 @@ int Atomic::isEqual(std::string Origin, std::string Replacement)
 
 	if (Origin.size() >= Replacement.size()) {
 		for (unsigned int j = 0; j < sz || j < Replacement.size(); ++j) {
-			//Iterate through the Origin until it finds a sub match.
-			if (tolower(Origin[j]) == tolower(Replacement[j])) {
-				system("Pause");
-
+			//Iterate through the Origin until it finds a first letter sub match.
+			cout << char(tolower(Origin[j])) << " || " << char(tolower(Replacement[j]));
+			if (char(tolower(Origin[j])) == char(tolower(Replacement[j]))) {
+				cout << char(tolower(Origin[j])) << " || " << char(tolower(Replacement[j]));
 			}
-		
 		}
-
-
 	}
 	else {
 
@@ -195,11 +192,12 @@ std::string Atomic::Run()
 
 	//Go through each element of the replacement string
 	for (size_t i = 0; i < OriginalLines.size(); i++) {
+		//The string that needs to be changed.
 		cout << "Original String: " << OriginalLines[i] << endl;
 	
 		//replacement and measure length of string
 		for (unsigned j = 0; j < ReplacementName.size(); j++) {
-			cout << "DEBUG: Starting from Replacements of: " << ReplacementCode[j] << " to " << OriginalLines[i] <<  endl;
+			cout << "DEBUG: Starting from Replacements of: " << OriginalLines[j] << " to " << ReplacementCode[i] <<  endl;
 
 			int check = isEqual(OriginalLines[i], ReplacementCode[j]);
 				

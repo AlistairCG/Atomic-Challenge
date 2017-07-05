@@ -18,18 +18,17 @@ class Atomic {
 	//Arrays of string(The sentence to be changed)
 	std::vector<std::string> OriginalLines;
 
-	//Replacement slots
+	//Parrallel Arrays/Replacement slots
 	std::vector<std::string>ReplacementName;
 	std::vector<std::string>ReplacementCode;
 	std::vector<std::string>ReplacementTie;
 
-	//Completed Lines
+	//Completed Lines, the output to the user.
 	std::vector<std::string> ChangedLines;
 
 	//The count of how many matches that can be found
 	size_t Replacement_Count;
 
-	int Original_Count;
 
 	public:
 
