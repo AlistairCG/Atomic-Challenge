@@ -55,18 +55,21 @@ int Atomic::LoadFiles()
 	cout << "\nSpecify Replacement File Name: ";
 	cin >> Replace;
 
+	Origin = (Origin == ".") ? "Asym.txt" : Origin;
+	Replace = (Replace == ".") ? "test.txt" : Replace;
+
 	//File IO and err check
 	FinOr.open(Origin);
 	FinRep.open(Replace);
 
 
 	if (!FinOr.is_open()) {
-		cout << "Origin File '" << Origin << "' could not be opened!\n";
+		cout << "Error: Origin File '" << Origin << "' could not be opened!\n";
 		
 		return -1;
 	}
 	else if(!FinRep.is_open()){
-		cout << "Replacement File '" << Replace << "' could not be opened!\n";
+		cout << "Error: Replacement File '" << Replace << "' could not be opened!\n";
 		return -2;
 	}
 	else {
@@ -74,8 +77,7 @@ int Atomic::LoadFiles()
 		SetFileName(Origin, Replace);
 
 		while (FinOr) {
-			if (line < 3) {
-				
+			if (line < 3) {	
 				//Read
 				FinOr >> tmp;
 				//Assign
@@ -86,12 +88,11 @@ int Atomic::LoadFiles()
 						//Update max size of the replacement elements
 						if (Replacement_Count < tmp.size())Replacement_Count = tmp.size();}
 					};
-					if (line == 2)ReplacementTie.push_back(tmp);
-						
+
+					if (line == 2)ReplacementTie.push_back(tmp);		
 				//Count
 				line++;
 				tmp = "";
-
 			}
 			else {
 				//Garbage
@@ -118,7 +119,7 @@ int Atomic::LoadFiles()
 
 	FinOr.close();
 	FinRep.close();
-	ListFileName();
+	GetFileName();
 	ListFileEntry();
 
 
@@ -131,12 +132,14 @@ void Atomic::SetFileName(string orig, string repl)
 	File_Replacment = repl;
 }
 
-void Atomic::ListFileName()
+
+//Output File Names
+void Atomic::GetFileName()
 {
 	cout << "File Names are\n Origin: " << File_OriginalLine << "\n Replacement: " << File_Replacment << endl;
 
 }
-
+//Output the Object contents
 void Atomic::ListFileEntry()
 {
 	cout << "Files entry is as follows\n Origin Entries: \n";
@@ -146,11 +149,12 @@ void Atomic::ListFileEntry()
 		cout <<setw(4) << left <<  ii++ <<setw(20) <<  ReplacementName[i] << " | " <<setw(5) << ReplacementCode[i] << " | " << setw(5) << ReplacementTie[i] << endl;
 	}
 
-	cout << "Additionally collected weight values and letter substitutes to match!\n";
-	cout << "\nReplacement String: ";
+	cout << "Collected weight values and letter substitutes to match!\n";
+	cout << "\The Replacement String is: ";
 	for (size_t i = 0; i < OriginalLines.size(); i++) {
 		cout << OriginalLines[i] << " ";
 	}
+	cout << endl;
 }
 
 int Atomic::isEqual(std::string Origin, std::string Replacement)
@@ -159,7 +163,7 @@ int Atomic::isEqual(std::string Origin, std::string Replacement)
 	cout << "DEBUG: ISEquals() Received the following:" << Origin << " " << Replacement << endl;
 	unsigned int sz = Origin.size();
 
-	if (Origin.size() != Replacement.size()) {
+	if (Origin.size() >= Replacement.size()) {
 		for (unsigned int j = 0; j < sz || j < Replacement.size(); ++j) {
 			//Iterate through the Origin until it finds a sub match.
 			if (tolower(Origin[j]) == tolower(Replacement[j])) {
@@ -186,11 +190,8 @@ int Atomic::isEqual(std::string Origin, std::string Replacement)
 }
 
 std::string Atomic::Run()
-{
-	//Begin String replacement using class OO.
-	
-	//Counter for replacment matches of string
-	int matches = 0;
+{	
+
 
 	//Go through each element of the replacement string
 	for (size_t i = 0; i < OriginalLines.size(); i++) {
@@ -198,18 +199,12 @@ std::string Atomic::Run()
 	
 		//replacement and measure length of string
 		for (unsigned j = 0; j < ReplacementName.size(); j++) {
-			cout << "DEBUG: Starting from Replacments of: " << ReplacementCode[j] << " to " << OriginalLines[i] <<  endl;
+			cout << "DEBUG: Starting from Replacements of: " << ReplacementCode[j] << " to " << OriginalLines[i] <<  endl;
 
 			int check = isEqual(OriginalLines[i], ReplacementCode[j]);
-			if (check == 0)
-				matches++;
-		
 				
 		}
-	
-
-
-		}
+	}
 	
 
 

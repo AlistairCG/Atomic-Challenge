@@ -26,7 +26,7 @@ class Atomic {
 	//Completed Lines
 	std::vector<std::string> ChangedLines;
 
-
+	//The count of how many matches that can be found
 	size_t Replacement_Count;
 
 	int Original_Count;
@@ -36,7 +36,7 @@ class Atomic {
 
 		int LoadFiles();
 		void SetFileName(std::string a, std::string b);
-		void ListFileName();
+		void GetFileName();
 		void ListFileEntry();
 		int isEqual(std::string a, std::string b);
 
